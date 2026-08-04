@@ -1,0 +1,40 @@
+version: '1.0'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongovol:/data/db
+    networks:
+      - mern-network
+
+  backend:
+    image: yazoo555/movie-vern-app:backend  # ← CHANGED: Use Docker Hub image
+    container_name: mernbackendcon
+    ports:
+      - "5000:5000"
+    environment:  # ← CHANGED: Use environment instead of env_file
+      - MONGODB_URI=mongodb://mongodb:27017/yourdbname
+    depends_on:
+      - mongodb
+    networks:
+      - mern-network
+
+  frontend:
+    image: yazoo555/movie-vern-app:frontend  # ← CHANGED: Use Docker Hub image
+    container_name: mernfrontendcon
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - mern-network
+
+volumes:
+  mongovol:
+
+networks:
+  mern-network:
