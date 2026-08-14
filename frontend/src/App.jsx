@@ -45,7 +45,7 @@ function App() {
   const [rating, setRating] = useState(3);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState("all"); // all | unwatched | watched
+  const [filter, setFilter] = useState("all"); 
 
   // Fetch all movies on mount
   useEffect(() => {

@@ -31,7 +31,6 @@ const createMovie = async (req, res) => {
   }
 };
 
-// PATCH /api/movies/:id (toggle watched)
 const updateMovie = async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
