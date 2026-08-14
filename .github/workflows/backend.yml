@@ -7,10 +7,10 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - uses: actions/checkout@v4
       - name: Build and push
-        environment: development
         run: bash scripts/build-and-push.sh
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
