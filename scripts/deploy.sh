@@ -14,7 +14,7 @@ ssh -o StrictHostKeyChecking=accept-new -i key.pem "$EC2_USER@$EC2_HOST" "
   docker pull $DOCKERHUB_USERNAME/$IMAGE:latest
 
   echo 'Starting $SERVICE...'
-  docker compose up -d $SERVICE
+docker compose up -d --no-recreate $SERVICE
 
   echo 'Deployment complete.'
 
