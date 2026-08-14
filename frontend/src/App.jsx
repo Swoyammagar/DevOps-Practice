@@ -19,6 +19,7 @@ const GENRES = [
   "Thriller",
 ];
 
+
 function StarRating({ value, onChange, readOnly = false }) {
   return (
     <div className={`stars ${readOnly ? "read-only" : ""}`}>
@@ -45,7 +46,7 @@ function App() {
   const [rating, setRating] = useState(3);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState("all"); 
+  const [filter, setFilter] = useState("all"); // all | unwatched | watched
 
   // Fetch all movies on mount
   useEffect(() => {
