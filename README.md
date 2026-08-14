@@ -72,3 +72,4 @@ Visit **http://localhost:5173** in your browser.
 | rating   | Number  | Star rating from 1 to 5 (default 3)      |
 | watched  | Boolean | Whether the movie has been watched       |
 | createdAt / updatedAt | Date | Auto-managed timestamps          |
+dasdsads
