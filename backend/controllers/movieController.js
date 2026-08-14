@@ -10,7 +10,6 @@ const getMovies = async (req, res) => {
   }
 };
 
-// POST /api/movies
 const createMovie = async (req, res) => {
   try {
     const { title, genre, rating } = req.body;

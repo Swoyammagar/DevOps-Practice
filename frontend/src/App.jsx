@@ -19,7 +19,6 @@ const GENRES = [
   "Thriller",
 ];
 
-// Reusable star-rating widget (interactive in the form, read-only on movie cards)
 function StarRating({ value, onChange, readOnly = false }) {
   return (
     <div className={`stars ${readOnly ? "read-only" : ""}`}>
