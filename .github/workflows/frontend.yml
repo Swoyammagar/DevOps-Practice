@@ -24,6 +24,7 @@ jobs:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           IMAGE: dockerapp-frontend
           CONTEXT: ./frontend
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
 
   deploy:
     needs: build-and-push
