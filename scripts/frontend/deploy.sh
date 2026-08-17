@@ -13,6 +13,9 @@ ssh -o StrictHostKeyChecking=accept-new -i key.pem "$EC2_USER@$EC2_HOST" "
   echo 'Pulling latest frontend image...'
   docker pull $DOCKERHUB_USERNAME/$IMAGE:latest
 
+  echo 'Removing old frontend container...'
+  docker compose rm -sf frontend
+
   echo 'Starting frontend...'
   docker compose up -d frontend
 
