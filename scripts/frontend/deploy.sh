@@ -14,10 +14,10 @@ ssh -o StrictHostKeyChecking=accept-new -i key.pem "$EC2_USER@$EC2_HOST" "
   docker pull $DOCKERHUB_USERNAME/$IMAGE:latest
 
   echo 'Removing old frontend container...'
-  docker compose rm -sf frontend
+  docker rm -f frontend 2>/dev/null || true
 
-  echo 'Starting frontend...'
-  docker compose up -d frontend
+  echo 'Starting new frontend container...'
+  docker compose up -d --no-deps frontend
 
   echo 'Frontend deployment complete.'
 

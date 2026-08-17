@@ -13,11 +13,14 @@ ssh -o StrictHostKeyChecking=accept-new -i key.pem "$EC2_USER@$EC2_HOST" "
   echo 'Pulling latest backend image...'
   docker pull $DOCKERHUB_USERNAME/$IMAGE:latest
 
-  echo 'Removing old MongoDB and backend containers...'
-  docker compose rm -sf mongodb backend
+  echo 'Removing old backend container...'
+  docker rm -f backend 2>/dev/null || true
 
-  echo 'Starting MongoDB and backend...'
-  docker compose up -d mongodb backend
+  echo 'Ensuring MongoDB is running...'
+  docker compose up -d mongodb
+
+  echo 'Starting new backend container...'
+  docker compose up -d backend
 
   echo 'Backend deployment complete.'
 
