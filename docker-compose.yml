@@ -1,24 +1,12 @@
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongovol:/data/db
-    networks:
-      - mern-network
-
   backend:
     image: swoyammagar/dockerapp-backend:latest
     container_name: backend
     ports:
       - "5000:5000"
-    depends_on:
-      - mongodb
     environment:
       PORT: 5000
-      MONGO_URI: mongodb://mongodb:27017/mern-movie-watchlist
+      MONGO_URI: ${MONGO_URI}
     networks:
       - mern-network
 
@@ -31,9 +19,6 @@ services:
       - backend
     networks:
       - mern-network
-
-volumes:
-  mongovol:
 
 networks:
   mern-network:
